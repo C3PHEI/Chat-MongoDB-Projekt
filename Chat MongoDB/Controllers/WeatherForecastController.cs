@@ -8,7 +8,7 @@ namespace Chat_MongoDB.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" , "Max"
     };
 
         private readonly ILogger<WeatherForecastController> _logger;
