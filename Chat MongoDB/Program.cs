@@ -1,15 +1,18 @@
+using Chat_MongoDB.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Fügen Sie den MongoDbContext als Dienst hinzu
+builder.Services.AddSingleton<MongoDbContext>(sp => new MongoDbContext(builder.Configuration["MongoDbSettings:ConnectionString"], builder.Configuration["MongoDbSettings:DatabaseName"]));
 
+// Weitere Dienste hinzufügen
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Konfigurieren Sie die HTTP-Anforderungspipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
