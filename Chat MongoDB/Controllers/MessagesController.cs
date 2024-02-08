@@ -4,7 +4,6 @@ using Chat_MongoDB.Services;
 
 namespace Chat_MongoDB.Controllers
 {
-   
 
     [ApiController]
     [Route("api/[controller]")]
@@ -30,5 +29,13 @@ namespace Chat_MongoDB.Controllers
             _messageService.PostMessage(message);
             return Ok();
         }
+
+        [HttpGet("Konversation by {id}")]
+        public ActionResult<List<Message>> GetMessagesBetweenParticipants([FromQuery] string participantId1, [FromQuery] string participantId2)
+        {
+            var messages = _messageService.GetMessagesBetweenParticipants(participantId1, participantId2);
+            return Ok(messages);
+        }
+
     }
 }

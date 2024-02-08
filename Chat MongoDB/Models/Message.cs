@@ -22,7 +22,7 @@ namespace Chat_MongoDB.Models
         public ChatWithParticipants chatWith { get; set; }
     }
 
-    public class ChatWithParticipants
+    public class ChatWithParticipants 
     {
         [BsonRepresentation(BsonType.ObjectId)]
         public string P1 { get; set; }
