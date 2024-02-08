@@ -1,5 +1,7 @@
 ﻿using Chat_MongoDB.Data;
 using Chat_MongoDB.Models;
+using MongoDB.Driver;
+using System.Collections.Generic;
 
 namespace Chat_MongoDB.Services
 {
@@ -16,6 +18,11 @@ namespace Chat_MongoDB.Services
         {
            
             _context.Users.InsertOne(user);
+        }
+
+        public List<User> GetAllUsers()
+        {
+            return _context.Users.Find(user => true).ToList();
         }
     }
 }

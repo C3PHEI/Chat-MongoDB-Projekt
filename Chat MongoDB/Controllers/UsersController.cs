@@ -1,6 +1,7 @@
 ﻿using Chat_MongoDB.Models;
 using Chat_MongoDB.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 
 namespace Chat_MongoDB.Controllers
@@ -15,6 +16,13 @@ namespace Chat_MongoDB.Controllers
         public UsersController(UserService userService)
         {
             _userService = userService;
+        }
+
+        [HttpGet]
+        public ActionResult<List<User>> GetAllUsers()
+        {
+            var users = _userService.GetAllUsers();
+            return Ok(users);
         }
 
         [HttpPost("register")]
