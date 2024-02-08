@@ -7,7 +7,6 @@ namespace Chat_MongoDB.Models
         public ObjectId Id { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; } // Warnung: Passwörter sollten niemals im Klartext gespeichert werden!
+        public string Password { get; set; }
     }
-
 }

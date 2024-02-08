@@ -15,6 +15,7 @@ namespace Chat_MongoDB.Data
 
         public IMongoCollection<User> Users => _database.GetCollection<User>("users");
         public IMongoCollection<Message> Messages => _database.GetCollection<Message>("messages");
+        public IMongoCollection<LoginHistory> loginHistory => _database.GetCollection<LoginHistory>("loginHistory");
     }
 
 }
