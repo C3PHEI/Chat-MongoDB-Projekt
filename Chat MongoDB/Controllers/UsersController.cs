@@ -31,8 +31,5 @@ namespace Chat_MongoDB.Controllers
             _userService.Register(user);
             return Ok();
         }
-
-        // Weitere Methoden für Login und Messaging hinzufügen
     }
-
 }

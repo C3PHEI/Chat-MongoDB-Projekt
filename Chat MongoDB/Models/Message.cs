@@ -13,12 +13,21 @@ namespace Chat_MongoDB.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string fromUserId { get; set; }
 
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string toUserId { get; set; }
-
         public string message { get; set; }
 
+        [BsonElement("timestamp")]
         [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         public DateTime timestamp { get; set; }
+
+        public ChatWithParticipants chatWith { get; set; }
+    }
+
+    public class ChatWithParticipants
+    {
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string P1 { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string P2 { get; set; }
     }
 }
