@@ -29,7 +29,8 @@ namespace Chat_MongoDB.Services
         public List<Message> GetMessagesBetweenParticipants(string participantId1, string participantId2)
         {
             var builder = Builders<Message>.Filter;
-            // Diese Abfrage prüft, ob eine der beiden IDs in den Feldern P1 oder P2 erscheint
+
+            // Dieser Filter prüft, ob die IDs in irgendeiner Kombination in P1 und P2 erscheinen
             var filter = builder.Or(
                 builder.And(
                     builder.Eq("chatWith.P1", participantId1),
@@ -38,20 +39,11 @@ namespace Chat_MongoDB.Services
                 builder.And(
                     builder.Eq("chatWith.P1", participantId2),
                     builder.Eq("chatWith.P2", participantId1)
-                ),
-                builder.And(
-                    builder.Eq("chatWith.P1", participantId1),
-                    builder.Eq("fromUserId", participantId2)
-                ),
-                builder.And(
-                    builder.Eq("chatWith.P1", participantId2),
-                    builder.Eq("fromUserId", participantId1)
                 )
             );
 
             return _context.Messages.Find(filter).ToList();
         }
-
 
     }
 }
