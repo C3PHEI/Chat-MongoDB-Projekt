@@ -17,14 +17,18 @@ namespace Chat_MongoDB.Controllers
             _messageService = messageService;
         }
 
+        [HttpGet]
+        public ActionResult<List<Message>> GetMessages()
+        {
+            var messages = _messageService.GetMessages();
+            return Ok(messages);
+        }
+
         [HttpPost]
         public IActionResult PostMessage(Message message)
         {
             _messageService.PostMessage(message);
             return Ok();
         }
-
-        // Weitere Methoden hinzufügen, falls benötigt
     }
-
 }

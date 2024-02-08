@@ -1,5 +1,6 @@
 ﻿using Chat_MongoDB.Data;
 using Chat_MongoDB.Models;
+using MongoDB.Driver;
 
 namespace Chat_MongoDB.Services
 {
@@ -14,9 +15,13 @@ namespace Chat_MongoDB.Services
 
         public void PostMessage(Message message)
         {
-            message.Timestamp = DateTime.UtcNow;
+            message.timestamp = DateTime.UtcNow;
             _context.Messages.InsertOne(message);
         }
-    }
 
+        public List<Message> GetMessages()
+        {
+            return _context.Messages.Find(message => true).ToList();
+        }
+    }
 }
