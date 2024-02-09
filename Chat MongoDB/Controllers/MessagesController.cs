@@ -31,9 +31,9 @@ namespace Chat_MongoDB.Controllers
         }
 
         [HttpGet("Konversation")]
-        public ActionResult<List<Message>> GetMessagesBetweenParticipants([FromQuery] string participantId1, [FromQuery] string participantId2)
+        public ActionResult<List<Message>> GetMessagesBetweenParticipants([FromQuery] string Person1, [FromQuery] string Person2)
         {
-            var messages = _messageService.GetMessagesBetweenParticipants(participantId1, participantId2);
+            var messages = _messageService.GetMessagesBetweenParticipants(Person1, Person2);
             return Ok(messages);
         }
 

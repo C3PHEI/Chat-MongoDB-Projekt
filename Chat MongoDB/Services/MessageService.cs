@@ -24,21 +24,19 @@ namespace Chat_MongoDB.Services
             return _context.Messages.Find(message => true).ToList();
         }
 
-        // In your MessageService class
-
-        public List<Message> GetMessagesBetweenParticipants(string participantId1, string participantId2)
+        public List<Message> GetMessagesBetweenParticipants(string Person1, string Person2)
         {
             var builder = Builders<Message>.Filter;
 
             // Dieser Filter prüft, ob die IDs in irgendeiner Kombination in P1 und P2 erscheinen
             var filter = builder.Or(
                 builder.And(
-                    builder.Eq("chatWith.P1", participantId1),
-                    builder.Eq("chatWith.P2", participantId2)
+                    builder.Eq("chatWith.P1", Person1),
+                    builder.Eq("chatWith.P2", Person2)
                 ),
                 builder.And(
-                    builder.Eq("chatWith.P1", participantId2),
-                    builder.Eq("chatWith.P2", participantId1)
+                    builder.Eq("chatWith.P1", Person2),
+                    builder.Eq("chatWith.P2", Person1)
                 )
             );
 
